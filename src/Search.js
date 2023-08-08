@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const TYPES = [
-  "Normal",
-  "Fighting",
-  "Psychic",
-  "Dark",
-  "Ghost",
-  "Bug",
-  "Dragon",
-  "Flying",
-  "Fairy",
-  "Rock",
-  "Ground",
-  "Steel",
-  "Poison",
-  "Grass",
-  "Water",
-  "Ice",
-  "Electric",
-  "Fire",
+  "normal",
+  "fighting",
+  "psychic",
+  "dark",
+  "ghost",
+  "bug",
+  "dragon",
+  "flying",
+  "fairy",
+  "rock",
+  "ground",
+  "steel",
+  "poison",
+  "grass",
+  "water",
+  "ice",
+  "electric",
+  "fire",
 ];
 
 export default class Search extends React.Component {
@@ -46,7 +46,7 @@ export default class Search extends React.Component {
             ))}
           </select>
           <br />
-          <Link to={`/display`}>Go</Link>
+          <Link to={`/display?type=${type}`}>Go</Link>
         </form>
       );
     }

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { type_matchup } from "./db/data";
 import ImageDisplay from "./images/ImageDisplay";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const multiplyObjects = (obj1, obj2) => {
   const multipliedObj = {};
@@ -110,10 +110,15 @@ const getKeysWith3LowestValues=(obj)=> {
   return result;
 };
 
-const type1 = "normal";
+//const type1 = "psychic";
 
 export default function Display() {
   //const { type1} = props;
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const type1 = searchParams.get("type");
+  //console.log(passedType);
 
   const object1 = type_matchup[type1];
   const sample_json = {};
