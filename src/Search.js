@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const TYPES = [
+export const TYPES = [
   "normal",
   "fighting",
   "psychic",
@@ -22,34 +22,37 @@ const TYPES = [
 ];
 
 export default class Search extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        type: "",
-      };
-    }
-  
-    handleTypeChange = (event) => {
-      this.setState({ type: event.target.value });
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: "",
     };
-  
-    render() {
-      const { type } = this.state;
-      return (
-        <form>
-          <select onChange={this.handleTypeChange} value={type}>
-            <option value="">Select your primary type</option>
-            {TYPES.map((type, index) => (
-              <option key={index} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-          <br />
-          <Link to={`/display?type=${type}`}>Go</Link>
-        </form>
-      );
-    }
   }
-  
-  
+
+  handleTypeChange = (event) => {
+    this.setState({ type: event.target.value });
+  };
+
+  render() {
+    const { type } = this.state;
+    return (
+      <form>
+        <select onChange={this.handleTypeChange} value={type}>
+          <option value="">Select your primary type</option>
+          {TYPES.map((type, index) => (
+            <option key={index} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+        <br />
+        <Link to={`/display?type=${type}`}>
+          Search for best type combinations
+        </Link>
+        {/* <Link to={`/ranking?type=${type}`}>
+          View rankings
+        </Link> */}
+      </form>
+    );
+  }
+}
