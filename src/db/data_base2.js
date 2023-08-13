@@ -1,7 +1,7 @@
 /*Normal","Fighting","Psychic","Dark","Ghost","Bug","Dragon",
      "Flying","Fairy","Rock","Ground","Steel","Poison","Grass","Water","Ice",
      "Electric","Fire"*/
-export  const type_matchup = {
+export const type_matchup_base2 = {
   normal: {
     normal: 2,
     fighting: 4,

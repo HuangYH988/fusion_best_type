@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import { type_matchup } from "./db/data";
+//import { type_matchup_base2 } from "./db/data_base2";
+import { type_matchup_base0 } from "./db/data_base0";
 import ImageDisplay from "./images/ImageDisplay";
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,7 +22,8 @@ const noOfResist = (json) => {
   for (const key in json) {
     let value = 0;
     for (const key2 in json[key]) {
-      if (json[key][key2] < 4) {
+      if (json[key][key2] < 0) {
+        // 4 for base2, 0 for base0
         value += 1;
       }
     }
@@ -35,7 +37,7 @@ const noOfWeak = (json) => {
   for (const key in json) {
     let value = 0;
     for (const key2 in json[key]) {
-      if (json[key][key2] > 4) {
+      if (json[key][key2] > 0) {
         value += 1;
       }
     }
@@ -49,17 +51,17 @@ const averagePoint = (json) => {
   for (const key in json) {
     let value = 0;
     for (const key2 in json[key]) {
-      value+=json[key][key2];
+      value += json[key][key2];
     }
-    const ave=Number((value/18).toFixed(2));
+    const ave = Number((value / 18).toFixed(2));
     result[key] = ave;
   }
   return result;
 };
 
-const getKeysWith3HighestValues=(obj)=> {
+const getKeysWith3HighestValues = (obj) => {
   const values = Object.values(obj);
-  
+
   const sortedValues = values.sort((a, b) => b - a);
   const highestValues = [sortedValues[0]];
 
@@ -68,9 +70,7 @@ const getKeysWith3HighestValues=(obj)=> {
   let thirdHighestFound = false;
 
   for (const [key, value] of Object.entries(obj)) {
-    
     if (value === highestValues[0]) {
-      
       result[key] = value;
     } else if (!secondHighestFound && value === sortedValues[1]) {
       result[key] = value;
@@ -78,15 +78,15 @@ const getKeysWith3HighestValues=(obj)=> {
     } else if (!thirdHighestFound && value === sortedValues[2]) {
       result[key] = value;
       thirdHighestFound = true;
-    } 
+    }
   }
-  
+
   return result;
 };
 
-const getKeysWith3LowestValues=(obj)=> {
+const getKeysWith3LowestValues = (obj) => {
   const values = Object.values(obj);
-  
+
   const sortedValues = values.sort((a, b) => a - b);
   const lowestValues = [sortedValues[0]];
 
@@ -95,7 +95,6 @@ const getKeysWith3LowestValues=(obj)=> {
   let thirdLowestFound = false;
 
   for (const [key, value] of Object.entries(obj)) {
-    
     if (value === lowestValues[0]) {
       result[key] = value;
     } else if (!secondLowestFound && value === sortedValues[1]) {
@@ -104,7 +103,7 @@ const getKeysWith3LowestValues=(obj)=> {
     } else if (!thirdLowestFound && value === sortedValues[2]) {
       result[key] = value;
       thirdLowestFound = true;
-    } 
+    }
   }
 
   return result;
@@ -120,10 +119,10 @@ export default function Display() {
   const type1 = searchParams.get("type");
   //console.log(passedType);
 
-  const object1 = type_matchup[type1];
+  const object1 = type_matchup_base0[type1];
   const sample_json = {};
-  for (const key in type_matchup) {
-    let object2 = type_matchup[key];
+  for (const key in type_matchup_base0) {
+    let object2 = type_matchup_base0[key];
 
     let sample = multiplyObjects(object1, object2);
     if (key !== type1) {
@@ -145,24 +144,24 @@ export default function Display() {
         Primary Type is: <ImageDisplay type={type1} />
       </div>
       <div>
-      Type combination formed with the most resistances:
-      {Object.keys(resist).map((key, index) => (
-         <ImageDisplay key={index} type={key} />
-      ))}
-    </div>
-    <div>
-    Type combination formed with the least weaknesses:
-      {Object.keys(weak).map((key, index) => (
-         <ImageDisplay key={index} type={key} />
-      ))}
-    </div>
-    <div>
-    Type combination formed with the most desirable score:
-      {Object.keys(average).map((key, index) => (
-         <ImageDisplay key={index} type={key} />
-      ))}
-    </div>
-      
+        Type combination formed with the most resistances:
+        {Object.keys(resist).map((key, index) => (
+          <ImageDisplay key={index} type={key} />
+        ))}
+      </div>
+      <div>
+        Type combination formed with the least weaknesses:
+        {Object.keys(weak).map((key, index) => (
+          <ImageDisplay key={index} type={key} />
+        ))}
+      </div>
+      <div>
+        Type combination formed with the most desirable score:
+        {Object.keys(average).map((key, index) => (
+          <ImageDisplay key={index} type={key} />
+        ))}
+      </div>
+
       <br />
       <Link to="/">Back</Link>
     </div>
