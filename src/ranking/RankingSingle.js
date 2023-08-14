@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { type_matchup_base0 } from "../db/data_base0";
 import { type_matchup_base2 } from "../db/data_base2";
 import { Link } from "react-router-dom";
+import ImageDisplay from "../images/ImageDisplay";
 
-const defence2 = () => {
+export const defence2 = () => {
   let list = {};
   let i = 0;
   const json = type_matchup_base2;
@@ -20,7 +21,7 @@ const defence2 = () => {
 
   return list;
 };
-const defence0 = () => {
+export const defence0 = () => {
   let list = {};
   let i = 0;
   const json = type_matchup_base0;
@@ -37,7 +38,7 @@ const defence0 = () => {
   return list;
 };
 
-const attack2 = () => {
+export const attack2 = () => {
   let list = {};
   //let i = 0;
   const json = type_matchup_base2;
@@ -61,7 +62,7 @@ const attack2 = () => {
 
   return list;
 };
-const attack0 = () => {
+export const attack0 = () => {
   let list = {};
   let i = 0;
   const json = type_matchup_base0;
@@ -86,7 +87,7 @@ const attack0 = () => {
   return list;
 };
 
-const orderList = (obj) => {
+export const orderList = (obj) => {
   const entries = Object.entries(obj);
 
   const sortedEntries = entries.sort((a, b) => b[1] - a[1]);
@@ -139,11 +140,11 @@ export default function RankingSingle() {
     <div>
       {toggleAD} {toggle02}
       <h3>Ranking:</h3>
-     
       <ul>
-        {rankedList.map((type) => (
+        {rankedList.map((type, index) => (
           <li key={type[0]}>
-            {type[2]}. {type[0]}: {type[1]}
+            {type[2]}.{"  "}
+            <ImageDisplay key={index} type={type[0]} />: {type[1]}
           </li>
         ))}
       </ul>
