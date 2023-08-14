@@ -109,15 +109,10 @@ const getKeysWith3LowestValues = (obj) => {
   return result;
 };
 
-//const type1 = "psychic";
-
 export default function Display() {
-  //const { type1} = props;
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const type1 = searchParams.get("type");
-  //console.log(passedType);
 
   const object1 = type_matchup_base0[type1];
   const sample_json = {};
@@ -129,7 +124,7 @@ export default function Display() {
       sample_json[key] = sample;
     }
   }
-  //console.log(sample_json);
+
   const resist_list = noOfResist(sample_json);
   const resist = getKeysWith3HighestValues(resist_list);
   const weak_list = noOfWeak(sample_json);

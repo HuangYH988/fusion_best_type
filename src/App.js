@@ -4,6 +4,7 @@ import Display from "./display";
 import { Routes, Route } from "react-router-dom";
 import Search from "./Search";
 import ErrorPage from "./Error";
+import RankingSingle from "./ranking/RankingSingle";
 
 export default class App extends React.Component {
   render() {
@@ -20,7 +21,7 @@ export default class App extends React.Component {
               path="/display"
               element={<Display   />}
             />
-
+            <Route path="/ranking" element={<RankingSingle />} />
             <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </header>

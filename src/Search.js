@@ -49,9 +49,10 @@ export default class Search extends React.Component {
         <Link to={`/display?type=${type}`}>
           Search for best type combinations
         </Link>
-        {/* <Link to={`/ranking?type=${type}`}>
+        <br />
+        <Link to={`/ranking`}>
           View rankings
-        </Link> */}
+        </Link>
       </form>
     );
   }
