@@ -6,6 +6,7 @@ import Search from "./Search";
 import ErrorPage from "./Error";
 import RankingSingle from "./ranking/RankingSingle";
 import DisplayRanking from "./ranking/DisplayRanking";
+import RankingDouble from "./ranking/RankingDouble";
 
 export default class App extends React.Component {
   render() {
@@ -21,6 +22,8 @@ export default class App extends React.Component {
             <Route path="/display" element={<Display />} />
             <Route path="/ranking" element={<RankingSingle />} />
             <Route path="/typerank" element={<DisplayRanking />} />
+              <Route path="/dual" element={<RankingDouble />} />
+               
             <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </header>
