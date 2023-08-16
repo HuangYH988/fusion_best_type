@@ -41,7 +41,7 @@ class ImageDisplay extends React.Component {
 
     return (
       <div className="inline-container">
-        <img src={myImage} width="70" alt={type} key={type} />
+        <img src={myImage} width="75" alt={type} key={type} />
       </div>
     );
   }

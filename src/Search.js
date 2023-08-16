@@ -69,6 +69,7 @@ export default function Search() {
   return (
     <div>
       <form>
+        <h4>Search your your chosen type's best type combinations:</h4>
         <select onChange={handleTypeChange} value={type}>
           <option value="">Select your primary type</option>
           {TYPES.map((type, index) => (
@@ -84,6 +85,7 @@ export default function Search() {
         <br />
       </form>
       <br />
+      <h4>View rankings for single types or type combinations:</h4>
       <Link to={`/ranking`}>View rankings</Link>
       <h4>Or search for ranking of your chosen type combination</h4>
       <form>

@@ -162,6 +162,8 @@ export default function RankingSingle() {
         Display defence-oriented
       </button>
       <br />
+      <Link to="/ranking_dual">View dual type rankings</Link>
+      <br />
       <Link to="/">Home</Link>
     </div>
   );

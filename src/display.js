@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-//import { type_matchup_base2 } from "./db/data_base2";
+import { type_matchup_base2 } from "./db/data_base2";
 import { type_matchup_base0 } from "./db/data_base0";
 import ImageDisplay from "./images/ImageDisplay";
 import { Link, useLocation } from "react-router-dom";
 
-const multiplyObjects = (obj1, obj2) => {
+export const multiplyObjects = (obj1, obj2) => {
   const multipliedObj = {};
 
   for (const key in obj1) {
@@ -17,13 +17,27 @@ const multiplyObjects = (obj1, obj2) => {
   return multipliedObj;
 };
 
-const noOfResist = (json) => {
+export const addingObjects = (obj1, obj2) => {
+  const addedObj = {};
+
+  for (const key in obj1) {
+    if (obj2.hasOwnProperty(key)) {
+      addedObj[key] = obj1[key] + obj2[key];
+    }
+  }
+
+  return addedObj;
+};
+
+const noOfResist = (json,mode) => {
   const result = {};
   for (const key in json) {
     let value = 0;
     for (const key2 in json[key]) {
-      if (json[key][key2] < 0) {
-        // 4 for base2, 0 for base0
+      if (
+        (mode === "base0" && json[key][key2] < 0) ||
+        (mode === "base2" && json[key][key2] < 4)
+      ) {
         value += 1;
       }
     }
@@ -32,12 +46,15 @@ const noOfResist = (json) => {
   return result;
 };
 
-const noOfWeak = (json) => {
+const noOfWeak = (json,mode) => {
   const result = {};
   for (const key in json) {
     let value = 0;
     for (const key2 in json[key]) {
-      if (json[key][key2] > 0) {
+      if (
+        (mode === "base0" && json[key][key2] > 0) ||
+        (mode === "base2" && json[key][key2] > 4)
+      ) {
         value += 1;
       }
     }
@@ -114,22 +131,40 @@ export default function Display() {
   const searchParams = new URLSearchParams(location.search);
   const type1 = searchParams.get("type");
 
-  const object1 = type_matchup_base0[type1];
-  const sample_json = {};
+  const [mode, setMode] = useState("base0"); // Initialize mode as "base0"
+
+  const toggleMode = () => {
+    setMode(mode === "base0" ? "base2" : "base0"); // Toggle between "base0" and "base2"
+  };
+
+  const typeMatchupData =
+    mode === "base0" ? type_matchup_base0 : type_matchup_base2;
+
+  const object1 = mode === "base0" ? type_matchup_base0[type1] : type_matchup_base2[type1] ; // Type1 is obtained from list in previous page
+  const result_json = {}; // Resulting json for effective of different type attacks against the resulting type combinations
+  if (mode ==="base0"){
   for (const key in type_matchup_base0) {
-    let object2 = type_matchup_base0[key];
+    const object2 = type_matchup_base0[key];
 
-    let sample = multiplyObjects(object1, object2);
+    let result = addingObjects(object1, object2);
     if (key !== type1) {
-      sample_json[key] = sample;
+      result_json[key] = result;
     }
-  }
+  }} else if (mode ==="base2"){
+    for (const key in type_matchup_base2) {
+      const object2 = type_matchup_base2[key];
+  
+      let result = multiplyObjects(object1, object2);
+      if (key !== type1) {
+        result_json[key] = result;
+      }
+    }}
 
-  const resist_list = noOfResist(sample_json);
+  const resist_list = noOfResist(result_json, mode);
   const resist = getKeysWith3HighestValues(resist_list);
-  const weak_list = noOfWeak(sample_json);
+  const weak_list = noOfWeak(result_json,mode);
   const weak = getKeysWith3LowestValues(weak_list);
-  const average_list = averagePoint(sample_json);
+  const average_list = averagePoint(result_json);
   const average = getKeysWith3LowestValues(average_list);
   return (
     <div>
@@ -156,7 +191,8 @@ export default function Display() {
           <ImageDisplay key={index} type={key} />
         ))}
       </div>
-
+<br/><button onClick={toggleMode}>Toggle Mode</button>
+Current mode: {mode}
       <br />
       <Link to="/">Back</Link>
     </div>

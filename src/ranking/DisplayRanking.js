@@ -7,7 +7,7 @@ import {
   orderList,
 } from "./RankingSingle";
 import ImageDisplay from "../images/ImageDisplay";
-import '../App.css'
+import "../App.css";
 
 const offence0 = attack0();
 const offence2 = attack2();
@@ -23,10 +23,10 @@ export default function DisplayRanking(props) {
   const searchParams = new URLSearchParams(location.search);
   const type1 = searchParams.get("type1");
   const type2 = searchParams.get("type2");
-  let type2Null =true;
-  if (type2 === "none"){
+  let type2Null = true;
+  if (type2 === "none") {
     type2Null = false;
-  };
+  }
   const rankScoreT1A0 = [];
   const rankScoreT1A2 = [];
   const rankScoreT1D0 = [];
@@ -74,40 +74,55 @@ export default function DisplayRanking(props) {
   const history = useNavigate();
 
   const handleDualLinkClick = (event) => {
-    event.preventDefault(); 
+    event.preventDefault(); //Prevents default action of refreshing the page and losing types passed
     if (!type2Null) {
       // Show alert if type2Null is false
-      alert("You cannot navigate to Dual Typing page when there is no secondary type");
+      alert(
+        "You cannot navigate to Dual Typing page when there is no secondary type"
+      );
     } else {
       // Navigate to "/dual" if type2Null is true
-      history.push("/dual");
+      history(`/dual?type1=${type1}&type2=${type2}`);
     }
   };
 
   return (
     <div>
       <div className="flex-container">
-      <div className="type1-wrapper">
-        <ImageDisplay type={type1} />: <br />
-        Attacking base 0: ranking: {rankScoreT1A0[0]}, score: {rankScoreT1A0[1]}<br />
-        Attacking base 2: ranking: {rankScoreT1A2[0]}, score: {rankScoreT1A2[1]}<br />
-        Defending base 0: ranking: {rankScoreT1D0[0]}, score: {rankScoreT1D0[1]}<br />
-        Defending base 2: ranking: {rankScoreT1D2[0]}, score: {rankScoreT1D2[1]}
-      </div>
-      {type2Null && (
-      <div className="type2-wrapper">
-        <ImageDisplay type={type2} />:<br />
-        Attacking base 0: ranking: {rankScoreT2A0[0]}, score: {rankScoreT2A0[1]}<br />
-        Attacking base 2: ranking: {rankScoreT2A2[0]}, score: {rankScoreT2A2[1]}<br />
-        Defending base 0: ranking: {rankScoreT2D0[0]}, score: {rankScoreT2D0[1]}<br />
-        Defending base 2: ranking: {rankScoreT2D2[0]}, score: {rankScoreT2D2[1]}
-      </div>)}
-      
+        <div className="type1-wrapper">
+          <ImageDisplay type={type1} />: <br />
+          Attacking base 0: ranking: {rankScoreT1A0[0]}, score:{" "}
+          {rankScoreT1A0[1]}
+          <br />
+          Attacking base 2: ranking: {rankScoreT1A2[0]}, score:{" "}
+          {rankScoreT1A2[1]}
+          <br />
+          Defending base 0: ranking: {rankScoreT1D0[0]}, score:{" "}
+          {rankScoreT1D0[1]}
+          <br />
+          Defending base 2: ranking: {rankScoreT1D2[0]}, score:{" "}
+          {rankScoreT1D2[1]}
+        </div>
+        {type2Null && (
+          <div className="type2-wrapper">
+            <ImageDisplay type={type2} />:<br />
+            Attacking base 0: ranking: {rankScoreT2A0[0]}, score:{" "}
+            {rankScoreT2A0[1]}
+            <br />
+            Attacking base 2: ranking: {rankScoreT2A2[0]}, score:{" "}
+            {rankScoreT2A2[1]}
+            <br />
+            Defending base 0: ranking: {rankScoreT2D0[0]}, score:{" "}
+            {rankScoreT2D0[1]}
+            <br />
+            Defending base 2: ranking: {rankScoreT2D2[0]}, score:{" "}
+            {rankScoreT2D2[1]}
+          </div>
+        )}
       </div>
       <br />
-      <Link  onClick={handleDualLinkClick}>
-        Dual typing
-      </Link><br/>
+      <Link onClick={handleDualLinkClick}>Dual typing</Link>
+      <br />
       <Link to="/">Home</Link>
     </div>
   );
