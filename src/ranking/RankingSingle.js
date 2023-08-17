@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { TYPES } from "../Search";
 import { type_matchup_base0 } from "../db/data_base0";
 import { type_matchup_base2 } from "../db/data_base2";
 import { Link } from "react-router-dom";

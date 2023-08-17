@@ -22,14 +22,18 @@ export const addingObjects = (obj1, obj2) => {
 
   for (const key in obj1) {
     if (obj2.hasOwnProperty(key)) {
-      addedObj[key] = obj1[key] + obj2[key];
+      if (obj1[key] === -2 || obj2[key] === -2) {
+        addedObj[key] = -3;
+      } else {
+        addedObj[key] = obj1[key] + obj2[key];
+      }
     }
   }
 
   return addedObj;
 };
 
-const noOfResist = (json,mode) => {
+const noOfResist = (json, mode) => {
   const result = {};
   for (const key in json) {
     let value = 0;
@@ -46,7 +50,7 @@ const noOfResist = (json,mode) => {
   return result;
 };
 
-const noOfWeak = (json,mode) => {
+const noOfWeak = (json, mode) => {
   const result = {};
   for (const key in json) {
     let value = 0;
@@ -140,29 +144,32 @@ export default function Display() {
   const typeMatchupData =
     mode === "base0" ? type_matchup_base0 : type_matchup_base2;
 
-  const object1 = mode === "base0" ? type_matchup_base0[type1] : type_matchup_base2[type1] ; // Type1 is obtained from list in previous page
+  const object1 =
+    typeMatchupData[type1]; // Type1 is obtained from list in previous page
   const result_json = {}; // Resulting json for effective of different type attacks against the resulting type combinations
-  if (mode ==="base0"){
-  for (const key in type_matchup_base0) {
-    const object2 = type_matchup_base0[key];
+  if (mode === "base0") {
+    for (const key in type_matchup_base0) {
+      const object2 = type_matchup_base0[key];
 
-    let result = addingObjects(object1, object2);
-    if (key !== type1) {
-      result_json[key] = result;
+      let result = addingObjects(object1, object2);
+      if (key !== type1) {
+        result_json[key] = result;
+      }
     }
-  }} else if (mode ==="base2"){
+  } else if (mode === "base2") {
     for (const key in type_matchup_base2) {
       const object2 = type_matchup_base2[key];
-  
+
       let result = multiplyObjects(object1, object2);
       if (key !== type1) {
         result_json[key] = result;
       }
-    }}
+    }
+  }
 
   const resist_list = noOfResist(result_json, mode);
   const resist = getKeysWith3HighestValues(resist_list);
-  const weak_list = noOfWeak(result_json,mode);
+  const weak_list = noOfWeak(result_json, mode);
   const weak = getKeysWith3LowestValues(weak_list);
   const average_list = averagePoint(result_json);
   const average = getKeysWith3LowestValues(average_list);
@@ -191,8 +198,9 @@ export default function Display() {
           <ImageDisplay key={index} type={key} />
         ))}
       </div>
-<br/><button onClick={toggleMode}>Toggle Mode</button>
-Current mode: {mode}
+      <br />
+      <button onClick={toggleMode}>Toggle Mode</button>
+      Current mode: {mode}
       <br />
       <Link to="/">Back</Link>
     </div>
