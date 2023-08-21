@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fusion_best_type/static/css/main.28916afe.css",
-    "main.js": "/fusion_best_type/static/js/main.0f6872e3.js",
+    "main.css": "/fusion_best_type/static/css/main.e31dea1d.css",
+    "main.js": "/fusion_best_type/static/js/main.651974a4.js",
     "static/js/787.5aa731bb.chunk.js": "/fusion_best_type/static/js/787.5aa731bb.chunk.js",
     "static/media/Dragon.png": "/fusion_best_type/static/media/Dragon.e975b79539b2b87a7588.png",
     "static/media/Psychic.png": "/fusion_best_type/static/media/Psychic.a9b6d4fc4d65ec5815bf.png",
@@ -22,12 +22,12 @@
     "static/media/Steel.png": "/fusion_best_type/static/media/Steel.bee6ea2c11cbbe1936af.png",
     "static/media/Ice.png": "/fusion_best_type/static/media/Ice.42fc8832d5cdcce1ddee.png",
     "index.html": "/fusion_best_type/index.html",
-    "main.28916afe.css.map": "/fusion_best_type/static/css/main.28916afe.css.map",
-    "main.0f6872e3.js.map": "/fusion_best_type/static/js/main.0f6872e3.js.map",
+    "main.e31dea1d.css.map": "/fusion_best_type/static/css/main.e31dea1d.css.map",
+    "main.651974a4.js.map": "/fusion_best_type/static/js/main.651974a4.js.map",
     "787.5aa731bb.chunk.js.map": "/fusion_best_type/static/js/787.5aa731bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28916afe.css",
-    "static/js/main.0f6872e3.js"
+    "static/css/main.e31dea1d.css",
+    "static/js/main.651974a4.js"
   ]
 }
