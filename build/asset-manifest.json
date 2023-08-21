@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/fusion_best_type/static/css/main.e31dea1d.css",
+    "main.js": "/fusion_best_type/static/js/main.651974a4.js",
+    "static/js/787.5aa731bb.chunk.js": "/fusion_best_type/static/js/787.5aa731bb.chunk.js",
+    "static/media/Dragon.png": "/fusion_best_type/static/media/Dragon.e975b79539b2b87a7588.png",
+    "static/media/Psychic.png": "/fusion_best_type/static/media/Psychic.a9b6d4fc4d65ec5815bf.png",
+    "static/media/Grass.png": "/fusion_best_type/static/media/Grass.61eeb23d3225e50ba29b.png",
+    "static/media/Ground.png": "/fusion_best_type/static/media/Ground.f16872b2d276a4dcc097.png",
+    "static/media/Normal.png": "/fusion_best_type/static/media/Normal.232a82c89ab168347cf4.png",
+    "static/media/Poison.png": "/fusion_best_type/static/media/Poison.1f29f1d6d00efd052cbb.png",
+    "static/media/Electric.png": "/fusion_best_type/static/media/Electric.e0d7b01e7512898c0ddc.png",
+    "static/media/Ghost.png": "/fusion_best_type/static/media/Ghost.575c327f9c529ba77e54.png",
+    "static/media/Fighting.png": "/fusion_best_type/static/media/Fighting.30d02f4589c9e8c32786.png",
+    "static/media/Rock.png": "/fusion_best_type/static/media/Rock.4d5282a12a8a427db49d.png",
+    "static/media/Water.png": "/fusion_best_type/static/media/Water.d5f3847266cb0f19a521.png",
+    "static/media/Flying.png": "/fusion_best_type/static/media/Flying.98dec468f45a2c4a5696.png",
+    "static/media/Dark.png": "/fusion_best_type/static/media/Dark.2a39bf0ef54b9a465480.png",
+    "static/media/Bug.png": "/fusion_best_type/static/media/Bug.fba12b8ad0529b306638.png",
+    "static/media/Fairy.png": "/fusion_best_type/static/media/Fairy.db4a0b84ed79d46e4a48.png",
+    "static/media/Fire.png": "/fusion_best_type/static/media/Fire.0f18536545131a704b3e.png",
+    "static/media/Steel.png": "/fusion_best_type/static/media/Steel.bee6ea2c11cbbe1936af.png",
+    "static/media/Ice.png": "/fusion_best_type/static/media/Ice.42fc8832d5cdcce1ddee.png",
+    "index.html": "/fusion_best_type/index.html",
+    "main.e31dea1d.css.map": "/fusion_best_type/static/css/main.e31dea1d.css.map",
+    "main.651974a4.js.map": "/fusion_best_type/static/js/main.651974a4.js.map",
+    "787.5aa731bb.chunk.js.map": "/fusion_best_type/static/js/787.5aa731bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e31dea1d.css",
+    "static/js/main.651974a4.js"
+  ]
+}
