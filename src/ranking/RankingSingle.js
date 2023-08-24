@@ -12,7 +12,7 @@ export const defence2 = () => {
     for (const matchup in json[key]) {
       i += json[key][matchup];
     }
-    const positive_score = 72 - i;
+    const positive_score = 86 - i;
     //const average_2dp = Number((i / 18).toFixed(2));
     list[key] = positive_score;
     i = 0;
@@ -28,7 +28,7 @@ export const defence0 = () => {
     for (const matchup in json[key]) {
       i += json[key][matchup];
     }
-    const positive_score = 18 - i;
+    const positive_score = 36 - i;
     //const average_2dp = Number((i / 18).toFixed(2));
     list[key] = positive_score;
     i = 0;
