@@ -14,8 +14,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h2>
-          App for finding out what the best type foreach type's denfensive
-          counterpart is
+          App for finding out what the best type for each type's defensive counterpart is
         </h2>
         <header className="App-header">
           <Routes>
