@@ -7,11 +7,11 @@ import ImageDisplay from "../images/ImageDisplay";
 import { multiplyObjects, addingObjects } from "../display";
 import "../App.css";
 
-function areSameTypes(type1, type2) {
+export function areSameTypes(type1, type2) {
   return type1 === type2;
 }
 
-function isDuplicateSample(List, type1, type2) {
+export function isDuplicateSample(List, type1, type2) {
   // Function checks for each element in list and return true if there is duplicate in type combination
   return List.some(
     (entry) =>
@@ -20,7 +20,7 @@ function isDuplicateSample(List, type1, type2) {
   );
 }
 
-const orderList = (objArray) => {
+export const orderList = (objArray) => {
   const sortedItems = objArray.sort((a, b) => b.score - a.score);
 
   let currentRank = 1;
@@ -108,10 +108,13 @@ export default function RankingDouble() {
       score: score,
     });
   }
+  
+
   const ranked_combo_list = toggleSingle
     ? orderList(combined_list)
     : orderList(combo_list);
 
+ 
   return (
     <div>
       <p>Dual Type rankings {toggle02}</p>
@@ -159,4 +162,6 @@ export default function RankingDouble() {
     </button>
     </div>
   );
+
 }
+
