@@ -5,6 +5,7 @@ import { type_matchup_base2 } from "../db/data_base2";
 import { Link } from "react-router-dom";
 import ImageDisplay from "../images/ImageDisplay";
 import { multiplyObjects, addingObjects } from "../display";
+import "../App.css";
 
 function areSameTypes(type1, type2) {
   return type1 === type2;
@@ -39,12 +40,16 @@ const orderList = (objArray) => {
 
 export default function RankingDouble() {
   const [toggle02, setToggle02] = useState("base2"); // State to track which list to display
+  const [toggleSingle, setToggleSingle] = useState(false); // Set state to include or exclude single types
   const setBase2 = () => {
     setToggle02("base2");
   };
 
   const setBase0 = () => {
     setToggle02("base0");
+  };
+  const setSingle = () => {
+    setToggleSingle((prevToggleSingle) => !prevToggleSingle); // Toggle the value
   };
 
   let combo_list = [];
@@ -77,7 +82,7 @@ export default function RankingDouble() {
       }
     }
   }
-  let combined_list = combo_list;
+  let combined_list = [...combo_list];
 
   // Adding single type scenarios
   for (const type in db) {
@@ -103,17 +108,26 @@ export default function RankingDouble() {
       score: score,
     });
   }
-  const ranked_combo_list = orderList(combined_list);
+  const ranked_combo_list = toggleSingle
+    ? orderList(combined_list)
+    : orderList(combo_list);
 
   return (
     <div>
-      <p>Dual Type rankings {toggle02}:</p>
+      <p>Dual Type rankings {toggle02}</p>
+      {toggleSingle ? (
+        <p>including single typing:</p>
+      ) : (
+        <p>excluding single typing:</p>
+      )}
       <button onClick={setBase2} disabled={toggle02 === "base2"}>
         Display base2
       </button>
       <button onClick={setBase0} disabled={toggle02 === "base0"}>
         Display base0
       </button>
+      <br />
+      <button onClick={setSingle}>Add or remove single typing</button>
       <br />
       {ranked_combo_list.map((combo, index) => (
         <div>
@@ -132,9 +146,17 @@ export default function RankingDouble() {
         Display base0
       </button>
       <br />
+      <button onClick={setSingle}>Add or remove single typing</button>
+      <br />
       <Link to="/ranking">View single type rankings</Link>
       <br />
       <Link to="/">Home</Link>
+      <button id="top-button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+      Top
+    </button>
+    <button id="bottom-button" onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}>
+      Bottom
+    </button>
     </div>
   );
 }
