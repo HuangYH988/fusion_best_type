@@ -202,6 +202,8 @@ export default function Display() {
       <button onClick={toggleMode}>Toggle Mode</button>
       Current mode: {mode}
       <br />
+      <Link to="/display/coverage">Go to coverage</Link>
+      <br />
       <Link to="/">Back</Link>
     </div>
   );

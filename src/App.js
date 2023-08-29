@@ -8,18 +8,22 @@ import RankingSingle from "./ranking/RankingSingle";
 import DisplayRanking from "./ranking/DisplayRanking";
 import DisplayDouble from "./ranking/DisplayDouble";
 import RankingDouble from "./ranking/RankingDouble";
+import { CoverageTemp } from "./coverage/CoverageHome";
 
 export default class App extends React.Component {
   render() {
     return (
       <div className="App">
         <h2>
-          App for finding out what the best type for each type's defensive counterpart is
+          App for finding out what the best type for each type's defensive
+          counterpart is
         </h2>
         <header className="App-header">
           <Routes>
             <Route path="/" element={<Search />} />
             <Route path="/display" element={<Display />} />
+            <Route path="/display/coverage" element={<CoverageTemp />} />
+
             <Route path="/ranking" element={<RankingSingle />} />
             <Route path="/ranking_dual" element={<RankingDouble />} />
 
