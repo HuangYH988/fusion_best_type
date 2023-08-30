@@ -74,3 +74,17 @@
   bottom: initial;
   top: 70px;
 }
+
+.label-tag{
+  color: aqua;
+  font-size: 12px;
+}
+
+.types-container {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
+}
+
+.type-container {
+  flex: 1;
+}

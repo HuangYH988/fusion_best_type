@@ -8,7 +8,7 @@ import RankingSingle from "./ranking/RankingSingle";
 import DisplayRanking from "./ranking/DisplayRanking";
 import DisplayDouble from "./ranking/DisplayDouble";
 import RankingDouble from "./ranking/RankingDouble";
-import { CoverageTemp } from "./coverage/CoverageHome";
+import { CoverageHome } from "./coverage/CoverageHome";
 
 export default class App extends React.Component {
   render() {
@@ -22,7 +22,7 @@ export default class App extends React.Component {
           <Routes>
             <Route path="/" element={<Search />} />
             <Route path="/display" element={<Display />} />
-            <Route path="/display/coverage" element={<CoverageTemp />} />
+            <Route path="/display/coverage" element={<CoverageHome />} />
 
             <Route path="/ranking" element={<RankingSingle />} />
             <Route path="/ranking_dual" element={<RankingDouble />} />
