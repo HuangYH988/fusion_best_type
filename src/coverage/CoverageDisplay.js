@@ -15,7 +15,7 @@ function replaceElementsWithFalse(array, indicesToReplace) {
 
 export default function CoverageDisplay(props){
     const {type1, type2, type3, type4}=props;
-    const indicesToReplace = [0, 5, 10];
+    const indicesToReplace = [];
     const arrayWithTrueValues2 = replaceElementsWithFalse(arrayWithTrueValues, indicesToReplace);
     return(
         <div><div>

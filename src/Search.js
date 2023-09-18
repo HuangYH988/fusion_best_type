@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 export const TYPES = [
   "normal",
   "fighting",
@@ -68,6 +69,7 @@ export default function Search() {
 
   return (
     <div>
+      
       <form>
         <h4>Search your your chosen type's best type combinations:</h4>
         <select onChange={handleTypeChange} value={type}>
