@@ -35,9 +35,19 @@ class ImageDisplay extends React.Component {
     //   "Fire",
     // ];
 
-    let myImage;
-    const Type = this.capitalizeFirstLetter(type.toString());
-    myImage = require(`./${Type}.png`);
+    let myImage = null;
+
+    try {
+      const Type = this.capitalizeFirstLetter(type.toString());
+      myImage = require(`./${Type}.png`);
+    } catch (error) {
+      // Handle the error here, you can log it if needed
+      console.error(`Error loading image for type: ${type}`);
+    }
+
+    if (!myImage) {
+      return null; // Return null if myImage is not a valid image target
+    }
 
     return (
       <div className="inline-container">

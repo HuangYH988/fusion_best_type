@@ -36,7 +36,7 @@ export function CoverageHome() {
 
     // Make sure there are no repeats amongst the types
     if (
-      newType2 !== "" &&
+      (newType2 !== "" && newType2 !== "none")&&
       (Type1 === newType2 || newType2 === type3 || newType2 === type4)
     ) {
       alert(
@@ -62,7 +62,7 @@ export function CoverageHome() {
 
     // Make sure there are no repeats amongst the types
     if (
-      newType3 !== "" &&
+      (newType3 !== "" && newType3 !== "none")&&
       (Type1 === newType3 || newType3 === type2.value || newType3 === type4)
     ) {
       alert(
@@ -77,7 +77,7 @@ export function CoverageHome() {
 
     // Make sure there are no repeats amongst the types
     if (
-      newType4 !== "" &&
+      (newType4 !== "" && newType4 !== "none") &&
       (Type1 === newType4 || newType4 === type2.value || newType4 === type3)
     ) {
       alert(
@@ -146,9 +146,14 @@ export function CoverageHome() {
         </select>
         <br />
       </form>
-      
+
       <br />
-      <CoverageDisplay type1={Type1} type2={type2} type3={type3} type4={type4}/>
+      <CoverageDisplay
+        type1={Type1}
+        type2={type2}
+        type3={type3}
+        type4={type4}
+      />
       <br />
       <Link to="/">Home</Link>
     </div>
