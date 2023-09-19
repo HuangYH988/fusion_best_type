@@ -5,23 +5,6 @@ import { TYPES } from "../Search";
 import "../App.css";
 import CoverageDisplay from "./CoverageDisplay";
 
-export function CoverageTemp() {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const Type1 = searchParams.get("type");
-
-  return (
-    <div>
-      <h1>This is a temperoray page</h1>
-      <h3>
-        The page for <ImageDisplay type={Type1} /> is under construction!
-      </h3>
-
-      <Link to="/">Home</Link>
-    </div>
-  );
-}
-
 export function CoverageHome() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -136,7 +119,7 @@ export function CoverageHome() {
         <select onChange={handleCombo4Change} value={type4}>
           <option value="">Select your forth type</option>
           <option key="0" value="none">
-            No forth type
+            No fourth type
           </option>
           {TYPES.map((type, index) => (
             <option key={index + 1} value={type}>
@@ -151,6 +134,7 @@ export function CoverageHome() {
       <CoverageDisplay
         type1={Type1}
         type2={type2}
+        t2STAB={type2.isSTAB}
         type3={type3}
         type4={type4}
       />
